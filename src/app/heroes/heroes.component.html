@@ -1,23 +1,92 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-    <li *ngFor="let hero of heros" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+  <li *ngFor="let hero of heros" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
 
 
 <div *ngIf="selectedHero">
 
-<p>
+  <p>
     Hero Name Editor</p>
-<h2>{{selectedHero.name | uppercase}} Details</h2>
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
 
-<div><span>id: </span>{{selectedHero.id}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="selectedHero.name" placeholder="name">
-    <input type="button" value="exit editor" (click)="onExitEditor()" >
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+      <input type="button" value="exit editor" (click)="onExitEditor()">
 
-  </label>
+    </label>
+  </div>
 </div>
-</div>
+
+<!--
+
+  Poll Model Object
+  ------------------
+  Poll Id :number
+  Question:String
+  Options:Option[]
+  maxAttemptsToVote:number
+  Total Votes:NUmber
+  Last Poll Date:Date
+  Start Date:Date
+  End Date:Date
+  Comments:Comment[]
+  Feedback:feedback[]
+  PermissionLevel:number {ex:  0-guest,1->public, 2-> editor, 3->admin }
+  CreatedUser:User
+
+  User Model Object
+  ------------------
+  name:string
+  id:number
+  permissionLevel:number
+  email:string
+  password:string
+  gender:string
+  postalcode:string
+  state:String
+  district:String
+  phone:string
+  month of birth:string
+  year of birth :string
+  age:number (transitive)
+
+  Options Model Object
+  ------------------
+  optionId:number
+  pollId:number
+  Option:String
+  
+
+  User Poll Option (before adding user poll options make sure the poll.maxPollAtempts satisfied )
+  -----------
+  id:number
+  optionId:number
+  pollId:number
+  userId:number
+  date:Date
+
+  Comment Model Object
+  -------------------
+  commentId:number
+  pollId:number
+  date:Date
+  comment:String
+  user:User
+
+  Feedback
+  ----------
+  feedbackID;number
+  pollId:number
+  userId:userId
+  feedback:String
+  date:date
+  priority : {0->negligible,1-Low, 2-medium,3-high}
+  status: {0->pending,1->in Progress,2->completed, -1->blocked, -2->rejected}
+
+
+-->
