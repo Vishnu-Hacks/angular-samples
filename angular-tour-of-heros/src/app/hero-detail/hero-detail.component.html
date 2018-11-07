@@ -1,0 +1,15 @@
+<div *ngIf="hero">
+
+  <p>
+    Hero Name Edito, by Hero-Detail Component</p>
+  <h2>{{hero.name | uppercase}} Details</h2>
+
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name">
+      <input type="button" value="exit editor" >
+
+    </label>
+  </div>
+</div>
